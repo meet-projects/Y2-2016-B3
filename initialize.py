@@ -1,7 +1,7 @@
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy import create_engine
 
-from database_setup import Base, Person
+from database_setup import Base, Users
 
 engine = create_engine('sqlite:///crudlab.db')
 Base.metadata.create_all(engine)
