@@ -6,7 +6,7 @@ app = Flask(__name__)
 ### Add your tables here!
 # For example:
 # from database_setup import Base, Potato, Monkey
-from database_setup import Base, Users
+from database_setup import Base, Users, Country, Post
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
