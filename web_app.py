@@ -31,6 +31,10 @@ def gotosignup():
 def gotosignin():
 	return render_template('signin.html')
 
+@app.route('/country')
+def countryprofile():
+	return render_template('countryprofile.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
