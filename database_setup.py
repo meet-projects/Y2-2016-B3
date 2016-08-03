@@ -12,7 +12,7 @@ class Post(Base):
 	__tablename__ = 'post'
 	id = Column(Integer, primary_key=True)
 	country_id = Column(Integer, ForeignKey('country.id'))
-	usermail = Column(String, ForeignKey('users.email'))
+	user_id = Column(String, ForeignKey('users.id'))
 	content = Column(String)
 	user = relationship("Users")
 	country = relationship("Country")
@@ -27,11 +27,11 @@ class Country(Base):
 		
 class Users(Base):
     __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
     fullname = Column(String)
-    email = Column(String, primary_key=True)
+    email = Column(String)
     gender = Column(String)
     country = Column(String)
-    interest = Column(String)
     dob = Column(Date)
     password = Column(String)
     posts = relationship("Post", uselist=True)
