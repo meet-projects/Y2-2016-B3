@@ -6,7 +6,7 @@ app = Flask(__name__)
 ### Add your tables here!
 # For example:
 # from database_setup import Base, Potato, Monkey
-from database_setup import Base, Users
+from database_setup import Base, Users, Country
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -85,13 +85,15 @@ def gotosignin():
 
 @app.route('/map')
 def map():
-	return render_template('map.html')
+	countries=session.query(Country).all()
+	return render_template('map.html', countries=countries)
 
-@app.route('/country')
-def countryprofile():
+@app.route('/country/<int:country_id>/')
+def countryprofile(country_id):
 	if 'user_email' in flask_session:
 		user = session.query(Users).filter_by(email=flask_session['user_email']).first()
-		return render_template('countryprofile.html', user=user)
+		country=session.query(Country).filter_by(id=country_id).first()
+		return render_template('countryprofile.html', user=user, country=country)
 	else:
 		return redirect(url_for('gotosignin'))
 

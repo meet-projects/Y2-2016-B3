@@ -1,1 +1,11 @@
 /* Add your CSS Code here */
+
+.thumbnail>img {
+width: 350px;
+height: 350px;
+background-image: url("paper.gif");
+
+}
+body{
+	background-color: #c6c5b9;
+}

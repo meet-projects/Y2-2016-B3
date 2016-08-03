@@ -22,7 +22,8 @@ class Country(Base):
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
 	posts = relationship("Post", uselist=True)
-	#lat = Column(Float)
+	image=Column(String)
+	#lat = Column(Float)s
 	#long = Column(Float)
 		
 class Users(Base):

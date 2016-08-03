@@ -36,3 +36,14 @@ session.commit()
 
 print user.posts
 """
+
+Italy = Country(name="Italy", image="http://rickzullo.com/wp-content/uploads/2013/09/Italiagiochi.jpg")
+Mexico=Country(name="Mexico", image="http://culturewhiz.org/sites/default/files/images/articles/Mexico.png")
+Palestine=Country(name="Palestine", image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/UN_Partition_Plan_For_Palestine_1947.svg/2000px-UN_Partition_Plan_For_Palestine_1947.svg.png")
+Israel = Country(name="Israel", image="http://www.asianinfo.org/asianinfo/israel/is-map.gif")
+session.add(Italy)
+session.add(Mexico)
+session.add(Israel)
+session.add(Palestine)
+session.commit()
+
