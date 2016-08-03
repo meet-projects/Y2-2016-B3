@@ -5,6 +5,26 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+
+
+
+class Post(Base):
+	__tablename__ = 'post'
+	id = Column(Integer, primary_key=True)
+	country_id = Column(Integer, ForeignKey('country.id'))
+	user_id = Column(String, ForeignKey('users.id'))
+	content = Column(String)
+	user = relationship("Users")
+	country = relationship("Country")
+
+class Country(Base):
+	__tablename__ = 'country'
+	id = Column(Integer, primary_key=True)
+	name = Column(String)
+	posts = relationship("Post", uselist=True)
+	#lat = Column(Float)
+	#long = Column(Float)
+		
 class Users(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
@@ -14,3 +34,4 @@ class Users(Base):
     country = Column(String)
     dob = Column(String)
     password = Column(String)
+    posts = relationship("Post", uselist=True)

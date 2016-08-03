@@ -83,6 +83,10 @@ def gotosignin():
 			flask_session['user_email'] = new_email
 			return redirect(url_for('userprofile'))
 
+@app.route('/map')
+def map():
+	return render_template('map.html')
+
 @app.route('/country')
 def countryprofile():
 	if 'user_email' in flask_session:
@@ -95,6 +99,9 @@ def countryprofile():
 def logout():
 	flask_session.pop('user_email', None)  
 
+@app.route('/add')
+def add():
+	return render_template('addpost.html')
 
 app.secret_key = '38087xsx9c70saeu0rq'
 if __name__ == '__main__':
