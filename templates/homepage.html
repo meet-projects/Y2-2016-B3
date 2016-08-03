@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Alpha by HTML5 UP</title>
+		<title>MEET Your Country</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -21,25 +21,8 @@
 					<h1>MEET The Countries</h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#" class="icon fa-angle-down">Layouts</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#" class="button">Sign Up</a></li>
+							<li><a href="{{url_for('gotosignin')}}">Sign In</a></li>
+							<li><a href="{{url_for('gotosignup')}}" class="button">Sign Up</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -49,7 +32,6 @@
 					<h2>MEET The Countries</h2>
 					<p>Get to know more about every country you are interested in</p>
 					<ul class="actions">
-						<li><a href="#" class="button special">Sign Up</a></li>
 						<li><a href="#" class="button">Learn More</a></li>
 					</ul>
 				</section>
@@ -62,10 +44,7 @@
 							<h2>Introducing the ultimate website
 							<br />
 							to acquire information about a huge diversity of countries</h2>
-							<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br />
-							adipiscing nunc adipiscing. Condimentum turpis massa.</p>
 						</header>
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
 					</section>
 
 					<section class="box special features">

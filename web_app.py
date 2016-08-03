@@ -35,5 +35,9 @@ def gotosignin():
 def map():
 	return render_template('map.html')
 
+@app.route('/country')
+def countryprofile():
+	return render_template('countryprofile.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
