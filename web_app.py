@@ -39,5 +39,9 @@ def map():
 def countryprofile():
 	return render_template('countryprofile.html')
 
+@app.route('/add')
+def add():
+	return render_template('addpost.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
