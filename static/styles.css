@@ -9,3 +9,9 @@ background-image: url("paper.gif");
 body{
 	background-color: #c6c5b9;
 }
+
+
+#map{
+	height: 500px;
+	width: 100%;
+}

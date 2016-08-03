@@ -3,23 +3,24 @@
 <head>
 <!-- Latest compiled and minified CSS --> 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
-<!-- jQuery library --> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 <!-- Latest compiled JavaScript --> 
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0pxScfRTwP9gcS3Ff0lG884qJJiE8Crs"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+<script src="{{url_for('static', filename='googlemaps.js')}}"></script>
+
 </head>
 <body> 
 
-{{ country }}
-{%for p in country.posts%}
-{{ country.name }}
-{{ country.posts }}
-{{ p.usermail }}
-{{ p.content }}
-{%endfor%}
+<form class="form-horizontal" role="form" action="{{url_for('countryprofile')}}"> 
+
+
 <a href="{{url_for('add')}}">Add</a>
 
+<div id="map"></div>
 
+</form>
 
 </body>
 </html>
