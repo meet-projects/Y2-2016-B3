@@ -7,10 +7,10 @@ Base = declarative_base()
 
 class Users(Base):
     __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
     fullname = Column(String)
-    email = Column(String, primary_key=True)
+    email = Column(String)
     gender = Column(String)
     country = Column(String)
-    interest = Column(String)
-    dob = Column(Date)
+    dob = Column(String)
     password = Column(String)
