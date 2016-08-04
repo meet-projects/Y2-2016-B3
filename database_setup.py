@@ -25,6 +25,7 @@ class Country(Base):
 	image=Column(String)
 	lat = Column(Float)
 	lon = Column(Float)
+	picture = Column(String)
 		
 class Users(Base):
     __tablename__ = 'users'
