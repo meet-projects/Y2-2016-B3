@@ -4,15 +4,18 @@
 <!-- Latest compiled and minified CSS --> 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
 <!-- Latest compiled JavaScript --> 
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0pxScfRTwP9gcS3Ff0lG884qJJiE8Crs"></script>
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
 <script src="{{url_for('static', filename='specificcountry.js')}}"></script>
 
 <!-- rendering the map -->
 <script type="text/javascript">
-	initialize({{country.lat|tojson}}, {{country.lon|tojson}});
+	$(document).ready(function(){
+		initialize({{country.lat|tojson}}, {{country.lon|tojson}});	
+	});
 </script>
 
 </head>
@@ -42,6 +45,10 @@
 </nav>
 
 <form class="form-horizontal" role="form" action="{{url_for('countryprofile', country_id=country.id)}}"> 
+
+
+
+
 <div id="map"></div>
 
 
