@@ -51,6 +51,10 @@
 
 <div id="map"></div>
 
+{% if country.picture %}
+<img src="{{ country.picture }}" width="30%" height="30%">
+{% endif %}
+
 
 <a type="button" class="btn btn-info btn-lg" href="{{url_for('add', country_id = country.id)}}">Add</a>
 
