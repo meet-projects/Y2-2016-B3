@@ -50,4 +50,3 @@ session.add(Israel)
 session.add(Palestine)
 session.commit()
 
->>>>>>> 44be3f9a6e24c138a73c68d9092a7ab23e57ec6b

@@ -89,22 +89,39 @@ def map():
 	return render_template('map.html', countries=countries)
 
 @app.route('/country/<int:country_id>/')
-def countryprofile(country_id):
+def countryprofile(country_id):	
 	if 'user_email' in flask_session:
 		user = session.query(Users).filter_by(email=flask_session['user_email']).first()
 		country=session.query(Country).filter_by(id=country_id).first()
 		return render_template('countryprofile.html', user=user, country=country)
 	else:
 		return redirect(url_for('gotosignin'))
-
 @app.route('/logout')
 def logout():
 	flask_session.pop('user_email', None)
 	return redirect(url_for('homepage'))  
 
-@app.route('/add')
-def add():
-	return render_template('addpost.html')
+@app.route('/add/<int:country_id>/', methods=['GET', 'POST'])
+def add(country_id):
+	if request.method == 'GET':
+		return render_template('addpost.html', country_id=country_id)
+	elif request.method == 'POST':
+		if 'user_email' in flask_session:
+			user = session.query(Users).filter_by(email=flask_session['user_email']).first()
+			country=session.query(Country).filter_by(id=country_id).first()
+			new_content = request.form["content"]
+			new_post = Post(
+				content = new_content,
+				country_id=country.id,
+				user_id = user.id
+				)
+			session.add(new_post)
+			session.commit()
+
+			return render_template('countryprofile.html', country_id=country_id)
+	else:
+		return redirect(url_for('gotosignin'))
+
 
 
 

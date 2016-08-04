@@ -4,14 +4,10 @@
 	<title>Post</title>
 </head>
 <body>
-
-	<textarea rows="2" cols="40">
-
-				</textarea>
-
+<form method="POST" action="{{url_for('add', country_id = country_id)}}" >
 				<br>
 
-				<textarea rows="12" cols="80">
+				<textarea rows="12" cols="80" name = "content">
 					
 
 				</textarea>
@@ -19,6 +15,6 @@
 			<th> <input type="submit" value="Add" class="btn btn-info"> </th>
 
 
-
+</form>
 </body>
 </html>
