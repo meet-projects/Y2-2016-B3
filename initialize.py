@@ -33,4 +33,4 @@ session.add(p2)
 
 session.commit()
 
-print user.posts
+print(user.posts)
