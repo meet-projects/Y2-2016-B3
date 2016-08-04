@@ -13,12 +13,40 @@
 </head>
 <body> 
 
-<form class="form-horizontal" role="form" action="{{url_for('countryprofile')}}"> 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MEET The Countries</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
 
+        <li><a href="{{url_for('userprofile')}}">Profile</a></li>
+        <li><a href="{{url_for('map')}}">Countries</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<a href="{{url_for('add')}}">Add</a>
-
+<form class="form-horizontal" role="form" action="{{url_for('countryprofile', country_id=country.id)}}"> 
 <div id="map"></div>
+
+
+<a type="button" class="btn btn-info btn-lg" href="{{url_for('add')}}">Add</a>
+
+<a type="button" class="btn btn-info btn-lg" href="{{url_for('map')}}">Back</a>
+
+
+
+
 
 </form>
 

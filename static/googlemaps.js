@@ -9,10 +9,10 @@ $(document).ready(function() {
   var labelIndex = 0;
 
   function initialize() {
-    var france = { lat: 46.2276, lng: 2.2137 };
-    var india = { lat: 20.5937, lng: 78.9629 };
-    var zero = { lat: 46.2276, lng: 0 };
-    var peru = { lat: 9.1900, lng: 75.0152 };
+    var Italy = { lat: 46.2276, lng: 2.2137 };
+    var Israel = { lat: 41, lng: 18 };
+    var Mexico = { lat: 46.2276, lng: 0 };
+    var Palestine = { lat: 9.1900, lng: 75.0152 };
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 2,
       center: zero
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 
     // Add a marker at the center of the map.
-    addMarker(france, map);
+    addMarker(Israel, map);
     addMarker(india, map);
     addMarker(peru, map);
   }
