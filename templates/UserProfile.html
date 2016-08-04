@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +7,7 @@
 	<!-- Making Bootstrap Responsive -- >
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -25,19 +23,43 @@ img.groove {
 </head>
 <body>
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MEET The Countries</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
 
-<form class="form-horizontal" role="form" action="{{url_for('userprofile',user=user)}}"
-	<div align="right">
+        <li class="active"><a href="{{url_for('userprofile')}}">Profile</a></li>
+        <li><a href="{{url_for('map')}}">Countries</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<form class="form-horizontal" role="form" action="{{url_for('userprofile',user=user)}}">
+<div class="container">
 	<h3> {{user.name}} </h3>
-	<img src="profile.svg" class="groove" width="20%" height="20%">
-	</div>
-	<div align="let">
+	{% if user.gender == 'Male' %}
+		<img src="{{url_for('static', filename='male.jpg')}}" class="groove" width="30%" height="30%">
+	{%else%}
+		<img src="{{url_for('static', filename='female.png')}}" class="groove" width="30%" height="30%">
+	{%endif%}
+	
 	<h1> Information </h1>
 	<p> {{user.fullname}} </p>
 	<p> {{user.email}} </p>
 	<p> {{user.gender}} </p>
 	<p> {{user.country}} </p>
-	</div>
+</div>
 </body>
 </html> 
->>>>>>> 45f56b9a620453436357b572a12ff4ab71a75894

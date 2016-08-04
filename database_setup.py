@@ -23,8 +23,8 @@ class Country(Base):
 	name = Column(String)
 	posts = relationship("Post", uselist=True)
 	image=Column(String)
-	#lat = Column(Float)s
-	#long = Column(Float)
+	lat = Column(Float)
+	lon = Column(Float)
 		
 class Users(Base):
     __tablename__ = 'users'
