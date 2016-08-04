@@ -1,0 +1,43 @@
+<<<<<<< HEAD
+=======
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap</title>
+	<meta charset="utf-8">
+	<!-- Making Bootstrap Responsive -- >
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<style>
+img.groove {
+    border-style: solid;
+    border-width: 5px;
+}
+	</style>
+</head>
+<body>
+
+
+<form class="form-horizontal" role="form" action="{{url_for('userprofile',user=user)}}"
+	<div align="right">
+	<h3> {{user.name}} </h3>
+	<img src="profile.svg" class="groove" width="20%" height="20%">
+	</div>
+	<div align="let">
+	<h1> Information </h1>
+	<p> {{user.fullname}} </p>
+	<p> {{user.email}} </p>
+	<p> {{user.gender}} </p>
+	<p> {{user.country}} </p>
+	</div>
+</body>
+</html> 
+>>>>>>> 45f56b9a620453436357b572a12ff4ab71a75894
