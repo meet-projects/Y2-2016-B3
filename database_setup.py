@@ -22,8 +22,9 @@ class Country(Base):
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
 	posts = relationship("Post", uselist=True)
-	#lat = Column(Float)
-	#long = Column(Float)
+	image=Column(String)
+	lat = Column(Float)
+	lon = Column(Float)
 		
 class Users(Base):
     __tablename__ = 'users'
@@ -32,6 +33,6 @@ class Users(Base):
     email = Column(String)
     gender = Column(String)
     country = Column(String)
-    dob = Column(Date)
+    dob = Column(String)
     password = Column(String)
     posts = relationship("Post", uselist=True)

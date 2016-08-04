@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Latest compiled and minified CSS --> 
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+<!-- Latest compiled JavaScript --> 
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0pxScfRTwP9gcS3Ff0lG884qJJiE8Crs"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+<script src="{{url_for('static', filename='specificcountry.js')}}"></script>
+
+<!-- rendering the map -->
+<script type="text/javascript">
+	initialize({{country.lat|tojson}}, {{country.lon|tojson}});
+</script>
+
 </head>
 <body> 
 
-{{ country }}
-{%for p in country.posts%}
-{{ country.name }}
-{{ country.posts }}
-{{ p.usermail }}
-{{ p.content }}
-{%endfor%}
-<a href="{{url_for('add')}}">Add</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MEET The Countries</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+        <li><a href="{{url_for('userprofile')}}">Profile</a></li>
+        <li><a href="{{url_for('map')}}">Countries</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<form class="form-horizontal" role="form" action="{{url_for('countryprofile', country_id=country.id)}}"> 
+<div id="map"></div>
 
 
+<a type="button" class="btn btn-info btn-lg" href="{{url_for('add')}}">Add</a>
+
+<a type="button" class="btn btn-info btn-lg" href="{{url_for('map')}}">Back</a>
+
+
+
+
+
+</form>
 
 </body>
 </html>
