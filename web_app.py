@@ -99,11 +99,14 @@ def countryprofile(country_id):
 
 @app.route('/logout')
 def logout():
-	flask_session.pop('user_email', None)  
+	flask_session.pop('user_email', None)
+	return redirect(url_for('homepage'))  
 
 @app.route('/add')
 def add():
 	return render_template('addpost.html')
+
+
 
 app.secret_key = '38087xsx9c70saeu0rq'
 if __name__ == '__main__':
