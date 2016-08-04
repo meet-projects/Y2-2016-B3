@@ -11,11 +11,13 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
 <script src="{{url_for('static', filename='specificcountry.js')}}"></script>
 
+
+
 <!-- rendering the map -->
 <script type="text/javascript">
-	$(document).ready(function(){
-		initialize({{country.lat|tojson}}, {{country.lon|tojson}});	
-	});
+  $(document).ready(function(){
+    initialize({{country.lat|tojson}}, {{country.lon|tojson}}); 
+  });
 </script>
 
 </head>
@@ -54,11 +56,14 @@
 {% if country.picture %}
 <img src="{{ country.picture }}" width="30%" height="30%">
 {% endif %}
-<<<<<<< HEAD
-=======
 
->>>>>>> 2c538502f4725c15cb42975c20992f3afeff1206
 
+
+{%for i in posts%}
+
+{{i.content}}
+
+{%endfor%}
 
 <a type="button" class="btn btn-info btn-lg" href="{{url_for('add', country_id = country.id)}}">Add</a>
 

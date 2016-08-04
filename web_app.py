@@ -93,7 +93,8 @@ def countryprofile(country_id):
 	if 'user_email' in flask_session:
 		user = session.query(Users).filter_by(email=flask_session['user_email']).first()
 		country=session.query(Country).filter_by(id=country_id).first()
-		return render_template('countryprofile.html', user=user, country=country)
+		getposts = session.query(Post).filter_by(country_id=country_id).all()
+		return render_template('countryprofile.html', user=user, country=country, posts=getposts)
 	else:
 		return redirect(url_for('gotosignin'))
 @app.route('/logout')
@@ -103,10 +104,10 @@ def logout():
 
 @app.route('/add/<int:country_id>/', methods=['GET', 'POST'])
 def add(country_id):
-	if request.method == 'GET':
-		return render_template('addpost.html', country_id=country_id)
-	elif request.method == 'POST':
-		if 'user_email' in flask_session:
+	if 'user_email' in flask_session:
+		if request.method == 'GET':
+			return render_template('addpost.html', country_id=country_id)
+		elif request.method == 'POST':
 			user = session.query(Users).filter_by(email=flask_session['user_email']).first()
 			country=session.query(Country).filter_by(id=country_id).first()
 			new_content = request.form["content"]
@@ -118,7 +119,8 @@ def add(country_id):
 			session.add(new_post)
 			session.commit()
 
-			return render_template('countryprofile.html', country_id=country_id)
+			getposts = session.query(Post).filter_by(country_id=country_id).all()
+			return redirect(url_for('countryprofile', country_id=country_id,country=country, posts=getposts))
 	else:
 		return redirect(url_for('gotosignin'))
 
