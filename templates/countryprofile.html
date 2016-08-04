@@ -17,7 +17,13 @@
 		initialize({{country.lat|tojson}}, {{country.lon|tojson}});	
 	});
 </script>
-
+	<style>
+	h3{
+		background-color: #E9E6FF;
+	    border: 4px;
+	    border-color: blue;
+	}
+	</style>
 </head>
 <body> 
 
@@ -46,29 +52,23 @@
 
 <form class="form-horizontal" role="form" action="{{url_for('countryprofile', country_id=country.id)}}"> 
 
-
-
-
 <div id="map"></div>
+	<br>
+	<div class="container">
+		<div class="row">
+		<div class="col-md-1"> <a type="button" class="btn btn-info btn-lg" href="{{url_for('map')}}"> Back </a> </div> 
+		<div align="center" class="col-md-10"> <h1> Italy  </h1> </div>
+		<a type="button" class="btn btn-info btn-lg" href="{{url_for('add', country_id = country.id)}}"> Add </a>
+		</div>
+	</div>
 
-{% if country.picture %}
-<img src="{{ country.picture }}" width="30%" height="30%">
-{% endif %}
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c538502f4725c15cb42975c20992f3afeff1206
-
-
-<a type="button" class="btn btn-info btn-lg" href="{{url_for('add', country_id = country.id)}}">Add</a>
-
-<a type="button" class="btn btn-info btn-lg" href="{{url_for('map')}}">Back</a>
-
-
-
-
-
+<div align="center">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/ZGhlkXw10Z0" frameborder="0" allowfullscreen></iframe>
+	<br><br>
+	<h3> Italian food is so good!! I made a pizza today:)) </h3>
+	</div>
 </form>
 
 </body>
 </html>
+
