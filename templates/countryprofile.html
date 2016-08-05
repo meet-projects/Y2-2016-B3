@@ -8,8 +8,16 @@
 
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0pxScfRTwP9gcS3Ff0lG884qJJiE8Crs"></script>
+
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='cntrystyle.css')}}">
 <script src="{{url_for('static', filename='specificcountry.js')}}"></script>
+
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta name="author" content="Jake Rocheleau">
+  <link rel="shortcut icon" href="http://www.webdesignerdepot.com/favicon.ico">
+  <link rel="icon" href="http://www.webdesignerdepot.com/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Wellfleet">
 
 
 
@@ -42,11 +50,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 
-        <li><a href="{{url_for('userprofile')}}">Profile</a></li>
-        <li><a href="{{url_for('map')}}">Countries</a></li>
+        <li><a class="normal" href="{{url_for('userprofile')}}">Profile</a></li>
+        <li><a class="normal" href="{{url_for('map')}}">Countries</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+        <li><a class="normal" href="{{url_for('logout')}}"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
       </ul>
     </div>
   </div>
@@ -56,39 +64,44 @@
 
 <div id="map"></div>
 
-{% if country.picture %}
-<img src="{{ country.picture }}" width="30%" height="30%">
-{% endif %}
-
-
-
+<div id="w">
+    <h1>Posts</h1>
+    <div id="container">
+          <ul id="comments">
 {%for i in posts%}
 
-{{i.content}}
+        <li class="cmmnt">
+          <div class="avatar"><a href="javascript:void(0);">
+          {% if i.user.gender == 'Male' %}
+          <img src="{{url_for('static', filename='male.jpg')}}" width="55" height="55" alt="DarkCubes photo avatar"></a></div>
+          {%else%}
+          <img src="{{url_for('static', filename='female.png')}}" width="55" height="55" alt="DarkCubes photo avatar"></a></div>
+          {%endif%}
+          <div class="cmmnt-content">
+            <header><a href="javascript:void(0);" class="userlink">{{i.user.fullname}}</a></header>
+            <p>{{i.content}}</p>
+          </div>  
+        </li>
 
 {%endfor%}
+        
+      <ul>
+      </div>
+  </div>
 
+
+{% if user.country == country.name %}
+<div align="right">
 <a type="button" class="btn btn-info btn-lg" href="{{url_for('add', country_id = country.id)}}">Add</a>
-
-<a type="button" class="btn btn-info btn-lg" href="{{url_for('map')}}">Back</a>
-
-
+</div>
+{%endif%}
 
 
-	<br>
-	<div class="container">
-		<div class="row">
-		<div class="col-md-1"> <a type="button" class="btn btn-info btn-lg" href="{{url_for('map')}}"> Back </a> </div> 
-		<div align="center" class="col-md-10"> <h1> Italy  </h1> </div>
-		<a type="button" class="btn btn-info btn-lg" href="{{url_for('add', country_id = country.id)}}"> Add </a>
-		</div>
-	</div>
 
-<div align="center">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/ZGhlkXw10Z0" frameborder="0" allowfullscreen></iframe>
-	<br><br>
-	<h3> Italian food is so good!! I made a pizza today:)) </h3>
-	</div>
+<br>
+
+
+
 </form>
 
 </body>
