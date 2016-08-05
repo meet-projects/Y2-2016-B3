@@ -10,6 +10,9 @@ body{
 	background-color: #c6c5b9;
 }
 
+.navbar-header{
+  color: "blue";
+}
 
 #map{
 	height: 500px;

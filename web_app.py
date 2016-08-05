@@ -88,16 +88,17 @@ def map():
 	countries=session.query(Country).all()
 	return render_template('map.html', countries=countries)
 
-@app.route('/country/<int:country_id>/')
+@app.route('/country/<int:country_id>/',  methods=['GET', 'POST'])
 def countryprofile(country_id):	
 	if 'user_email' in flask_session:
 		user = session.query(Users).filter_by(email=flask_session['user_email']).first()
 		country=session.query(Country).filter_by(id=country_id).first()
 		getposts = session.query(Post).filter_by(country_id=country_id).all()
 		getposts.reverse()
-		return render_template('countryprofile.html', user=user, country=country, posts=getposts)
+		return render_template('countryprofile.html', user=user, country=country, posts=getposts, country_id=country_id)
 	else:
 		return redirect(url_for('gotosignin'))
+
 @app.route('/logout')
 def logout():
 	flask_session.pop('user_email', None)
