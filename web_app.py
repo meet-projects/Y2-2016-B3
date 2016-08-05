@@ -117,7 +117,7 @@ def add(country_id):
 			new_content = request.form["content"]
 			new_post = Post(
 				content = new_content,
-				country_id=country.id,
+				country_id=get_country.id,
 				user_id = user.id
 				)
 			session.add(new_post)
