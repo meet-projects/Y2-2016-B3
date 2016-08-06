@@ -61,7 +61,7 @@
   </div>
 </nav>
 
-<form class="form-horizontal" role="form" action="{{url_for('countryprofile', country_id=country.id)}}"> 
+<form class="form-horizontal" role="form" action="{{url_for('countryprofile', country_id=country.id)}}" method="POST">
 
 <div id="map"></div>
 
@@ -72,26 +72,32 @@
 
 {% if user.country == country.name %}
 
-<form action="{{url_for('add', country_id = country_id)}}" method="POST">
-        <br>
 
+        <br>
         <textarea name="content" cols="54" rows="6" style="font-size:18px" placeholder="type somthing about your country">  </textarea>
 
-      <th> <input type="submit" value="Post" class="btn btn-info" align= "right"> </th>
-</form>
+        <th> <input type="submit" value="Post" class="btn btn-info" align= "right"> </th>
+
 {%endif%}
 
-{%for i in posts%}
 
+
+
+{%for i in posts%}
+     
         <li class="cmmnt">
           <div class="avatar"><a href="javascript:void(0);">
+          
           {% if i.user.gender == 'Male' %}
           <img src="{{url_for('static', filename='male.jpg')}}" width="55" height="55" alt="DarkCubes photo avatar"></a></div>
           {%else%}
           <img src="{{url_for('static', filename='female.png')}}" width="55" height="55" alt="DarkCubes photo avatar"></a></div>
           {%endif%}
+
           <div class="cmmnt-content">
+          
             <header><a href="javascript:void(0);" class="userlink">{{i.user.fullname}}</a></header>
+
             <p>{{i.content}}</p>
           </div>  
         </li>
@@ -102,15 +108,8 @@
       </div>
   </div>
 
-
-
-
 <br>
-
-
-
 </form>
-
 </body>
 </html>
 
