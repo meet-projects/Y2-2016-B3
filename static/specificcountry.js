@@ -8,8 +8,10 @@ function initialize(lati, lon) {
     var test = { lat: lon, lng: lati };
 
     var mapProps = {
-            zoom: 5,
-            center: { lat: lon, lng:lati  }
+            zoom: 7,
+            center: { lat: lon, lng: lati },
+            scrollwheel: false
+
         };
     var map = new google.maps.Map(document.getElementById('map'), mapProps);
     addMarker(test, map);
