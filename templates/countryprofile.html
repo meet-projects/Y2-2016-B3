@@ -65,6 +65,7 @@
 
 <div id="map"></div>
 
+
 <div id="w">
     <h1>Posts</h1>
     <div id="container">
@@ -87,16 +88,14 @@
      
         <li class="cmmnt">
           <div class="avatar"><a href="javascript:void(0);">
-          
           {% if i.user.gender == 'Male' %}
-          <img src="{{url_for('static', filename='male.jpg')}}" width="55" height="55" alt="DarkCubes photo avatar"></a></div>
+          <img src="{{url_for('static', filename='male.jpg')}}" width="55" height="55" alt="DarkCubes photo avatar"></div>
           {%else%}
-          <img src="{{url_for('static', filename='female.png')}}" width="55" height="55" alt="DarkCubes photo avatar"></a></div>
+          <img src="{{url_for('static', filename='female.png')}}" width="55" height="55" alt="DarkCubes photo avatar"></div>
           {%endif%}
-
+          </a>
           <div class="cmmnt-content">
-          
-            <header><a href="javascript:void(0);" class="userlink">{{i.user.fullname}}</a></header>
+            <header><a href="{{url_for('otherprofile', friend_id= i.user.id ) }}" class="userlink">{{i.user.fullname}}</a></header>
 
             <p>{{i.content}}</p>
           </div>  

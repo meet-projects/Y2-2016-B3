@@ -34,6 +34,7 @@ p { font-family: Arial, Geneva, Verdana, sans-serif; font-size: 1.3em; line-heig
 a { color: #896dc6; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+
 /* page layout structure */ 
 #w { display: block; width: 700px; margin: 0 auto; padding-top: 35px; }
 

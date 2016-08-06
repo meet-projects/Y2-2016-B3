@@ -29,17 +29,11 @@ def gotosignup():
 		return render_template('signup.html')
 	else:
 		new_name = request.form["fullname"]
-		print('A')
 		new_email = request.form["email"]
-		print('B')
 		new_country = request.form["country"]
-		print('C')
 		new_gender = request.form["sex"]
-		print('D')
 		new_password = request.form["password"]
-		print('E')
 		new_dob = request.form["dob"]
-		print('F')
 
 		new_user = Users(
 			fullname=new_name,
@@ -49,7 +43,6 @@ def gotosignup():
 			password=new_password,
 			dob=new_dob
 			)
-		print('G')
 
 		session.add(new_user)
 		session.commit()
@@ -64,6 +57,16 @@ def userprofile():
 	if 'user_email' in flask_session:
 		user = session.query(Users).filter_by(email=flask_session['user_email']).first()
 		return render_template('UserProfile.html', user=user)
+	else:
+		return redirect(url_for('gotosignin'))
+
+@app.route('/profile/<int:friend_id>')
+def otherprofile(friend_id):
+	print(friend_id)
+	if 'user_email' in flask_session:
+		loggeduser = session.query(Users).filter_by(email=flask_session['user_email']).first()
+		otheruser = session.query(Users).filter_by(id = friend_id).first()
+		return render_template('UserProfile.html', user=otheruser)
 	else:
 		return redirect(url_for('gotosignin'))
 
