@@ -26,7 +26,9 @@ class Country(Base):
 	lat = Column(Float)
 	lon = Column(Float)
 	picture = Column(String)
-		
+	
+	
+
 class Users(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)

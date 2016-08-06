@@ -40,7 +40,7 @@ print(user.posts)
 print user.posts
 """
 
-Italy = Country(name="Italy", image="http://rickzullo.com/wp-content/uploads/2013/09/Italiagiochi.jpg", lon=41.8719, lat=12.5674, picture="https://walkingtree.org/wp-content/uploads/2015/09/Elia-Locardi-Whispers-From-The-Past-The-Colosseum-Rome-Italy-1280-WM.jpg" )
+Italy = Country(name="Italy", image="http://rickzullo.com/wp-content/uploads/2013/09/Italiagiochi.jpg", lon=41.8719, lat=12.5674, image="https://walkingtree.org/wp-content/uploads/2015/09/Elia-Locardi-Whispers-From-The-Past-The-Colosseum-Rome-Italy-1280-WM.jpg", picture="http://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/09/30/102046292-153784617.530x298.jpg?v=1412100457")
 Mexico=Country(name="Mexico", image="http://culturewhiz.org/sites/default/files/images/articles/Mexico.png", lon=23.6345, lat=102.5528, picture="")
 Palestine=Country(name="Palestine", image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/UN_Partition_Plan_For_Palestine_1947.svg/2000px-UN_Partition_Plan_For_Palestine_1947.svg.png", lon=31.9522, lat=35.2332, picture="")
 Israel = Country(name="Israel", image="http://www.asianinfo.org/asianinfo/israel/is-map.gif", lon=31.0461, lat=34.8516, picture="")

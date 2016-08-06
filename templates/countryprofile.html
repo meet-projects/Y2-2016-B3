@@ -38,7 +38,7 @@
 </head>
 <body> 
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -95,14 +95,18 @@
           {%endif%}
           </a>
           <div class="cmmnt-content">
+
             <header><a href="{{url_for('otherprofile', friend_id= i.user.id ) }}" class="userlink">{{i.user.fullname}}</a></header>
 
-            <p>{{i.content}}</p>
+            <p>{{i.content}}
+            </p>
           </div>  
         </li>
 
 {%endfor%}
-        
+<img src="{{country.picture}}">
+<img src="{{country.image}}">
+       
       <ul>
       </div>
   </div>
