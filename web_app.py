@@ -51,6 +51,21 @@ def gotosignup():
 
 
 
+@app.route('/hksjdkajlfsajklfasjkl', methods=['POST'])
+def search_user():
+	if 'user_email' in flask_session:
+		searchuser=request.form['usersearch']
+		return redirect(url_for('users', searchuser=searchuser))
+	else:
+		return redirect(url_for('gotosignin'))
+
+@app.route('/searchusers/<string:searchuser>')
+def users(searchuser):
+	if 'user_email' in flask_session:
+		allusers = session.query(Users).filter(Users.fullname.contains(searchuser)).all()
+		return render_template('users.html', users=allusers)
+	else:
+		return redirect(url_for('gotosignin'))
 
 @app.route('/userprofile')
 def userprofile():
