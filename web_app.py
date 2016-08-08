@@ -18,9 +18,17 @@ session = DBSession()
 
 #YOUR WEB APP CODE GOES HERE
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def homepage():
 	return render_template('homepage.html')
+
+@app.route('/search')	
+def search():
+	#if starts with "#":   ...
+	search = request.args.get('search')
+	country = session.query(Country).filter_by(name=search).first()
+	return redirect(url_for('countryprofile', country_id=country.id))
+
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -67,13 +75,22 @@ def users(searchuser):
 	else:
 		return redirect(url_for('gotosignin'))
 
-@app.route('/userprofile')
+@app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
 	if 'user_email' in flask_session:
 		user = session.query(Users).filter_by(email=flask_session['user_email']).first()
 		return render_template('UserProfile.html', user=user)
 	else:
 		return redirect(url_for('gotosignin'))
+	if request.method =='GET':
+		return render_template('homepage.html')
+	#elif starts with "#":   ...
+	else:
+		search = request.form['search']
+		country = session.query(Country).filter_by(name=search).first()
+		return redirect(url_for('countryprofile', country_id=country.id))
+
+
 
 @app.route('/profile/<int:friend_id>')
 def otherprofile(friend_id):
@@ -119,12 +136,17 @@ def countryprofile(country_id):
 			return render_template('countryprofile.html',country=country, user=user , posts = getposts)
 		else :
 			new_content = request.form["content"]
-			new_link=request.form["link"]
+			new_link=request.form["picture_link"]
+			if "video_link" in request.form and request.form['video_link'] != '':
+				new_video= 'https://www.youtube.com/embed/' + request.form["video_link"].split('=')[-1]
+			else:
+				new_video = ""
 			new_post = Post(
 				content = new_content,
 				country_id=country.id,
 				user_id = user.id,
-				picture_link=new_link
+				picture_link=new_link,
+				video_link=new_video
 				)
 			session.add(new_post)
 			session.commit()

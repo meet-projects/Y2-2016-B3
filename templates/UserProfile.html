@@ -35,8 +35,9 @@
 
         <li class="active"><a href="{{url_for('userprofile')}}">Profile</a></li>
         <li><a href="{{url_for('map')}}">Countries</a></li>
-        <li> <form>
-        	<input type="text" name="search" placeholder="Search..">
+        <li> <form class="form-inline" action="{{url_for('search')}}" >
+        	<input type="text" name="search" placeholder="Search.." >
+        	<input type="submit">
         </form></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
