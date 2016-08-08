@@ -8,7 +8,7 @@ function initialize(lati, lon) {
     var test = { lat: lon, lng: lati };
 
     var mapProps = {
-            zoom: 7,
+            zoom: 5,
             center: { lat: lon, lng: lati },
             scrollwheel: false
 
