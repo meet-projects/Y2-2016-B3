@@ -74,8 +74,8 @@
 {% if user.country == country.name %}
         <br>
         <textarea name="content" cols="54" rows="6" style="font-size:18px" placeholder="type somthing about your country">  </textarea>
-        <input type="text" name="link" placeholder="Add Link">
-
+        <input type="text" name="picture_link" placeholder="Add picture Link">
+        <input type="text" name="video_link" placeholder="Add video Link">
         <th> <input type="submit" value="Post" class="btn btn-info" align= "right"> </th>
 {%endif%}
 
@@ -96,7 +96,11 @@
 
             <p>{{i.content}}
             </p>
+
             <img src="{{i.picture_link}}">
+            {% if i.video_link != '' %}
+            <iframe width="420" height="345" src="{{i.video_link}}"></iframe>
+            {% endif %}
           </div>  
         </li>
 

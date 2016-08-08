@@ -121,12 +121,17 @@ def countryprofile(country_id):
 			return render_template('countryprofile.html',country=country, user=user , posts = getposts)
 		else :
 			new_content = request.form["content"]
-			new_link=request.form["link"]
+			new_link=request.form["picture_link"]
+			if "video_link" in request.form and request.form['video_link'] != '':
+				new_video= 'https://www.youtube.com/embed/' + request.form["video_link"].split('=')[-1]
+			else:
+				new_video = ""
 			new_post = Post(
 				content = new_content,
 				country_id=country.id,
 				user_id = user.id,
-				picture_link=new_link
+				picture_link=new_link,
+				video_link=new_video
 				)
 			session.add(new_post)
 			session.commit()
