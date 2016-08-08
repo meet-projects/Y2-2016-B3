@@ -104,10 +104,12 @@ def countryprofile(country_id):
 			return render_template('countryprofile.html',country=country, user=user , posts = getposts)
 		else :
 			new_content = request.form["content"]
+			new_link=request.form["link"]
 			new_post = Post(
 				content = new_content,
 				country_id=country.id,
-				user_id = user.id
+				user_id = user.id,
+				picture_link=new_link
 				)
 			session.add(new_post)
 			session.commit()

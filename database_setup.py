@@ -16,6 +16,7 @@ class Post(Base):
 	content = Column(String)
 	user = relationship("Users")
 	country = relationship("Country")
+	picture_link=Column(String)
 
 class Country(Base):
 	__tablename__ = 'country'
