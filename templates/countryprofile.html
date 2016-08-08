@@ -24,8 +24,7 @@
 <!-- rendering the map -->
 <script type="text/javascript">
   $(document).ready(function(){
-    initialize({{country.lat|tojson}}, {{country.lon|tojson}});  
-
+    initialize({{country.lat|tojson}}, {{country.lon|tojson}});
   });
 </script>
 	<style>
@@ -81,10 +80,10 @@
 
 
 
-{%for i in posts%}
+{%for post in posts%}
         <li class="cmmnt">
           <div class="avatar"><a href="javascript:void(0);">
-          {% if i.user.gender == 'Male' %}
+          {% if post.user.gender == 'Male' %}
           <img src="{{url_for('static', filename='male.jpg')}}" width="55" height="55" alt="DarkCubes photo avatar"></div>
           {%else%}
           <img src="{{url_for('static', filename='female.png')}}" width="55" height="55" alt="DarkCubes photo avatar"></div>
@@ -92,14 +91,14 @@
           </a>
           <div class="cmmnt-content">
 
-            <header><a href="{{url_for('otherprofile', friend_id= i.user.id ) }}" class="userlink">{{i.user.fullname}}</a></header>
+            <header><a href="{{url_for('otherprofile', friend_id= post.user.id ) }}" class="userlink">{{post.user.fullname}}</a></header>
 
-            <p>{{i.content}}
+            <p>{{post.content}}
             </p>
 
-            <img src="{{i.picture_link}}">
-            {% if i.video_link != '' %}
-            <iframe width="420" height="345" src="{{i.video_link}}"></iframe>
+            <img src="{{post.picture_link}}">
+            {% if post.video_link != '' %}
+            <iframe width="420" height="345" src="{{post.video_link}}"></iframe>
             {% endif %}
           </div>  
         </li>

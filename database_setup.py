@@ -18,7 +18,6 @@ class Post(Base):
 	user = relationship("Users")
 	country = relationship("Country")
 	category = relationship("Category")
-	video_link=Column(String)
 	picture_link=Column(String)
 
 class Category(Base):
