@@ -76,8 +76,10 @@
 
         <br>
         <textarea name="content" cols="54" rows="6" style="font-size:18px" placeholder="type somthing about your country">  </textarea>
+        <input type="text" name="link" placeholder="Add Link">
 
         <th> <input type="submit" value="Post" class="btn btn-info" align= "right"> </th>
+
 
 {%endif%}
 
@@ -100,12 +102,13 @@
 
             <p>{{i.content}}
             </p>
+            <img src="{{i.picture_link}}">
           </div>  
         </li>
 
 {%endfor%}
 <img src="{{country.picture}}">
-<img src="{{country.image}}">
+
        
       <ul>
       </div>
