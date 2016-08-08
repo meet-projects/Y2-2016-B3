@@ -22,10 +22,9 @@
 
 					<nav id="nav">
 						<ul>
-							<li> <form>
-        					<input type="text" name="search" placeholder="Search..">
-        					</form></li>
-
+							<li> <form class="form-inline" action="{{url_for('search')}}">
+        					<input type="text" name="search" placeholder="Search.."> 
+        					<input type="submit"></form></li>
 							<li><a href="{{url_for('gotosignin')}}">Sign In</a></li>
 							<li><a href="{{url_for('gotosignup')}}" class="button">Sign Up</a></li>
 						</ul>

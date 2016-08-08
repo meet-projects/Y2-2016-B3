@@ -72,22 +72,16 @@
           <ul id="comments">
 
 {% if user.country == country.name %}
-
-
         <br>
         <textarea name="content" cols="54" rows="6" style="font-size:18px" placeholder="type somthing about your country">  </textarea>
         <input type="text" name="link" placeholder="Add Link">
 
         <th> <input type="submit" value="Post" class="btn btn-info" align= "right"> </th>
-
-
 {%endif%}
 
 
 
-
 {%for i in posts%}
-     
         <li class="cmmnt">
           <div class="avatar"><a href="javascript:void(0);">
           {% if i.user.gender == 'Male' %}
