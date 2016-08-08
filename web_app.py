@@ -18,9 +18,17 @@ session = DBSession()
 
 #YOUR WEB APP CODE GOES HERE
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def homepage():
 	return render_template('homepage.html')
+
+@app.route('/search')	
+def search():
+	#if starts with "#":   ...
+	search = request.args.get('search')
+	country = session.query(Country).filter_by(name=search).first()
+	return redirect(url_for('countryprofile', country_id=country.id))
+
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -51,14 +59,38 @@ def gotosignup():
 
 
 
+@app.route('/hksjdkajlfsajklfasjkl', methods=['POST'])
+def search_user():
+	if 'user_email' in flask_session:
+		searchuser=request.form['usersearch']
+		return redirect(url_for('users', searchuser=searchuser))
+	else:
+		return redirect(url_for('gotosignin'))
 
-@app.route('/userprofile')
+@app.route('/searchusers/<string:searchuser>')
+def users(searchuser):
+	if 'user_email' in flask_session:
+		allusers = session.query(Users).filter(Users.fullname.contains(searchuser)).all()
+		return render_template('users.html', users=allusers)
+	else:
+		return redirect(url_for('gotosignin'))
+
+@app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
 	if 'user_email' in flask_session:
 		user = session.query(Users).filter_by(email=flask_session['user_email']).first()
 		return render_template('UserProfile.html', user=user)
 	else:
 		return redirect(url_for('gotosignin'))
+	if request.method =='GET':
+		return render_template('homepage.html')
+	#elif starts with "#":   ...
+	else:
+		search = request.form['search']
+		country = session.query(Country).filter_by(name=search).first()
+		return redirect(url_for('countryprofile', country_id=country.id))
+
+
 
 @app.route('/profile/<int:friend_id>')
 def otherprofile(friend_id):
