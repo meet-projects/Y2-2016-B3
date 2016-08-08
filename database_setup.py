@@ -13,9 +13,16 @@ class Post(Base):
 	id = Column(Integer, primary_key=True)
 	country_id = Column(Integer, ForeignKey('country.id'))
 	user_id = Column(String, ForeignKey('users.id'))
+	category_id = Column(Integer, ForeignKey("category.id"))
 	content = Column(String)
 	user = relationship("Users")
 	country = relationship("Country")
+	category = relationship("Category")
+
+class Category(Base):
+	__tablename__ = "category"
+	id = Column(Integer, primary_key=True)
+	name = Column(String)
 
 class Country(Base):
 	__tablename__ = 'country'
@@ -39,3 +46,4 @@ class Users(Base):
     dob = Column(String)
     password = Column(String)
     posts = relationship("Post", uselist=True)
+
