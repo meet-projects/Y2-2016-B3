@@ -19,6 +19,7 @@ class Post(Base):
 	country = relationship("Country")
 	category = relationship("Category")
 	picture_link=Column(String)
+	video_link = Column(String)
 
 class Category(Base):
 	__tablename__ = "category"
